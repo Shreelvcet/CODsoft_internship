@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Level-1</title>
+</head>
+<style>
+    body{
+    text-align: center; 
+    min-height: 100vh;
+    max-width: 100%;
+    background: linear-gradient(45deg, #0a0a0a, #3a4452);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.container{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 25px;
+    padding: 15px;
+    box-shadow: 10px 10px 15px #000;
+    border: 2px solid rgb(116, 114, 114);
+}
+
+.button{
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+    border: 0;
+    font-size: 23px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-content: center;
+    box-shadow: -5px -6px 15px #000;
+    background: linear-gradient(45deg, #0a0a0a, #3a4452);
+    color: #fff;
+    outline: 1px solid #313131;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.row{
+    margin-top: 15px ;
+}
+
+.row input{
+    margin-top: 10px;
+    padding: 10px 5px;
+    border: none;
+    background: transparent;
+    font-size: 23px;
+    color: #fff;  
+    text-align: right;
+}
+
+.op{
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+    border: 0;
+    font-size: 23px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-content: center;
+    box-shadow: -5px -6px 15px #000;
+    background: linear-gradient(45deg, #ff0101, #3a4452);
+    color: #fff;
+    outline: 1px solid #313131;
+}
+</style>
+<body>
+    <div class="container ">
+        <div class="row">
+            <input class="input" id="input" type="text">
+        <div class="row">
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">*</button>
+        </div>
+        <div class="row">
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">+</button>
+        </div>
+        <div class="row">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">-</button>
+        </div>
+        <div class="row">
+            <button class="button">00</button>
+            <button class="button">0</button>
+            <button class="button">.</button>
+            <button class="button">/</button>
+        </div>
+        <div class="row">
+            <button class="button">AC</button>
+            <button class="button">DL</button>
+            <button class="button">%</button>
+            <button class="op">=</button>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    let inputbox = document.getElementById('input')
+let buttons = document.querySelectorAll('button')
+
+let string = ''
+
+buttons .forEach(element =>{
+    element.addEventListener('click', (b) => {
+        if(b.target.innerText == '='){
+            string = String(eval(string));
+            inputbox.value=string;
+        }
+        else if(b.target.innerText == 'AC'){
+            string = ''
+            inputbox.value = string;
+        }
+        else if(b.target.innerText == 'DL'){
+            string = string.substring(0,string.length-1)
+            inputbox.value = string;
+        }
+        else{
+            string += b.target.innerText;
+            inputbox.value = string;
+        }
+    })
+})
+</script>
+</html>
